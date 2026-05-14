@@ -23,7 +23,6 @@ export type MenuData = {
 const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
   const [mainApi, setMainApi] = useState<CarouselApi>()
   const [thumbApi, setThumbApi] = useState<CarouselApi>()
-  const [commentsApi, setCommentsApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
@@ -34,14 +33,10 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
     setCurrent(mainApi.selectedScrollSnap())
     mainApi.on('select', () => {
       const selectedIndex = mainApi.selectedScrollSnap()
-
       setCurrent(selectedIndex)
-
-      // Sync all carousels with main carousel
       thumbApi?.scrollTo(selectedIndex)
-      commentsApi?.scrollTo(selectedIndex)
     })
-  }, [mainApi, thumbApi, commentsApi])
+  }, [mainApi, thumbApi])
 
   useEffect(() => {
     if (!thumbApi) {
@@ -50,30 +45,10 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
 
     thumbApi.on('select', () => {
       const selectedIndex = thumbApi.selectedScrollSnap()
-
       setCurrent(selectedIndex)
-
-      // Sync main and comments carousel with thumbnail carousel
       mainApi?.scrollTo(selectedIndex)
-      commentsApi?.scrollTo(selectedIndex)
     })
-  }, [thumbApi, mainApi, commentsApi])
-
-  useEffect(() => {
-    if (!commentsApi) {
-      return
-    }
-
-    commentsApi.on('select', () => {
-      const selectedIndex = commentsApi.selectedScrollSnap()
-
-      setCurrent(selectedIndex)
-
-      // Sync main and thumbnail carousel with comments carousel
-      mainApi?.scrollTo(selectedIndex)
-      thumbApi?.scrollTo(selectedIndex)
-    })
-  }, [commentsApi, mainApi, thumbApi])
+  }, [thumbApi, mainApi])
 
   const handleThumbClick = useCallback(
     (index: number) => {
@@ -85,21 +60,29 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
   const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }))
 
   return (
-    <section className='flex-1 py-12 sm:py-16 lg:py-24'>
-      <div className='mx-auto flex h-full max-w-7xl flex-col gap-16 px-4 sm:px-6 lg:px-8'>
+    <section className='relative overflow-hidden flex-1 pt-0 pb-16 sm:pb-16 lg:pt-4 lg:pb-24 w-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background border-b border-border/40'>
+      <div className='mx-auto flex h-full max-w-7xl flex-col gap-16 px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Hero Header */}
-        <div className='grid grid-cols-1 gap-6 gap-y-12 md:gap-y-16 lg:grid-cols-5'>
-          <div className='flex w-full flex-col justify-center gap-5 max-lg:items-center lg:col-span-3 lg:h-95.5'>
-            <h1 className='text-3xl leading-[1.29167] font-semibold text-balance max-lg:text-center sm:text-4xl lg:text-5xl'>
-              Savor the taste of perfection
+        <div className='grid grid-cols-1 gap-6 gap-y-12 md:gap-y-16 lg:grid-cols-5 items-center mt-8'>
+          <div className='flex w-full flex-col justify-center gap-5 max-lg:items-center lg:col-span-2'>
+            <div className="flex flex-wrap justify-start max-lg:justify-center gap-3 mb-2">
+              <div className="border border-secondary/30 bg-secondary/10 text-secondary px-4 py-1.5 text-sm rounded-full">
+                Open Source
+              </div>
+              <div className="border border-primary/30 bg-primary/10 text-primary px-4 py-1.5 text-sm rounded-full">
+                Artificial Intelligence
+              </div>
+            </div>
+            
+            <h1 className='text-4xl leading-[1.2] font-bold text-balance max-lg:text-center sm:text-5xl lg:text-6xl tracking-tight'>
+              Machine Learning, <span className="text-primary">Automated</span> & <span className="text-secondary">Accessible</span>.
             </h1>
 
-            <p className='text-muted-foreground max-w-xl text-xl max-lg:text-center'>
-              Welcome to Restaurant where passion meets the plate.From sizzling appetisers to signature desserts, every
-              dish is crafted to delight your senses.
+            <p className='text-muted-foreground max-w-xl text-xl max-lg:text-center mt-2'>
+              A no-code AutoML platform built for everyone. Go from raw datasets to evaluated models in minutes using a powerful node-based canvas.
             </p>
 
-            <div className='flex items-center gap-4'>
+            <div className='flex items-center gap-4 mt-4'>
               <Button
                 asChild
                 size='lg'
@@ -121,7 +104,7 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
           </div>
 
           <Carousel
-            className='w-full lg:col-span-2'
+            className='w-full lg:col-span-3'
             setApi={setMainApi}
             plugins={[plugin.current]}
             opts={{
@@ -130,66 +113,37 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
           >
             <CarouselContent>
               {menudata.map(item => (
-                <CarouselItem key={item.id} className='flex w-full items-center justify-center'>
-                  <img src={item.img} alt={item.imgAlt} className='obeh size-95 object-contain' />
+                <CarouselItem key={item.id} className='flex w-full items-center justify-center p-4'>
+                  <div className="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-surface group">
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent z-10 pointer-events-none" />
+                    <img src={item.img} alt={item.imgAlt} className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-105' />
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
         </div>
 
-        <div className='grid grid-cols-1 gap-24 gap-y-12 md:gap-y-16 lg:grid-cols-5'>
+        <div className='flex justify-center w-full max-w-5xl mx-auto'>
           <Carousel
-            className='relative w-full max-lg:order-2 lg:col-span-3'
+            className='relative w-full'
             setApi={setThumbApi}
             opts={{
               loop: true
             }}
           >
-            <div className='from-background pointer-events-none absolute inset-y-0 left-0 z-1 w-25 bg-gradient-to-r via-85% to-transparent' />
-            <div className='from-background pointer-events-none absolute inset-y-0 right-0 z-1 w-25 bg-gradient-to-l via-85% to-transparent' />
-            <CarouselContent className='my-1 flex'>
+            <div className='from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r via-background/80 to-transparent' />
+            <div className='from-background pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l via-background/80 to-transparent' />
+            <CarouselContent className='my-2 flex items-center'>
               {menudata.map((item, index) => (
                 <CarouselItem
                   key={item.id}
-                  className={cn('basis-1/2 cursor-pointer sm:basis-1/3 md:basis-1/4 lg:basis-1/3 xl:basis-1/4')}
+                  className={cn('basis-1/2 cursor-pointer sm:basis-1/3 md:basis-1/3 lg:basis-1/3 transition-all duration-500 ease-out py-4', current === index ? 'scale-110 z-20' : 'scale-90 opacity-40 hover:opacity-70')}
                   onClick={() => handleThumbClick(index)}
                 >
-                  <div className='relative flex h-33 items-center justify-center'>
-                    <div className={cn('absolute bottom-0 -z-1', current === index ? 'text-primary' : 'text-border')}>
-                      <svg xmlns='http://www.w3.org/2000/svg' width='161' height='92' viewBox='0 0 161 92' fill='none'>
-                        <path
-                          d='M0.682517 80.6118L0.501193 39.6946C0.480127 34.9409 3.80852 30.8294 8.46241 29.8603L148.426 0.713985C154.636 -0.579105 160.465 4.16121 160.465 10.504V80.7397C160.465 86.2674 155.98 90.7465 150.453 90.7397L10.6701 90.5674C5.16936 90.5607 0.706893 86.1125 0.682517 80.6118Z'
-                          stroke='currentColor'
-                        />
-                      </svg>
-                    </div>
-                    <img src={item.img} alt={item.imgAlt} className='size-25' />
+                  <div className={cn('relative w-full aspect-video rounded-xl overflow-hidden transition-all duration-500', current === index ? 'border-2 border-primary shadow-[0_0_30px_rgba(79,70,229,0.3)]' : 'border border-border shadow-md')}>
+                    <img src={item.img} alt={item.imgAlt} className='w-full h-full object-cover' />
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-          <Carousel
-            className='flex w-full items-center justify-center lg:col-span-2'
-            setApi={setCommentsApi}
-            opts={{
-              loop: true
-            }}
-          >
-            <CarouselContent>
-              {menudata.map(item => (
-                <CarouselItem
-                  key={item.id}
-                  className='flex h-full min-h-14 w-full justify-center gap-4 px-6 lg:items-center'
-                >
-                  <img
-                    src={item.userAvatar}
-                    alt={item.imgAlt}
-                    className='border-background size-10 rounded-full border-4 drop-shadow-lg'
-                  />
-                  <Separator orientation='vertical' className='bg-primary hidden !h-6 !w-0.5 !rounded-full sm:block' />
-                  <p className='text-card-foreground'>{item.userComment}</p>
                 </CarouselItem>
               ))}
             </CarouselContent>

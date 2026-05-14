@@ -2,17 +2,8 @@
 import * as React from "react";
 
 import Image from "next/image";
-import Autoplay from "embla-carousel-autoplay";
 
 import { Badge } from "@/components/ui/badge";
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 import {
   Tooltip,
@@ -26,17 +17,38 @@ import { LazyVideo } from "@/components/ui/lazy-video";
 
 import { Server, User } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Highlighter } from "@/components/ui/highlighter";
-import { WarpBackground } from "@/components/ui/warp-background";
 import { ComparisonTable } from "@/components/ui/comparison-table";
+import HeroSection, { type MenuData } from "@/components/ui/hero_section_42";
+import { Navbar } from "@/components/ui/navbar";
+
+const carouselData: MenuData[] = [
+  {
+    id: 1,
+    img: '/images/placeholder-1.webp',
+    imgAlt: 'Platform screenshot 1',
+    userAvatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80',
+    userComment: 'This AutoML platform saved us weeks of setup time!'
+  },
+  {
+    id: 2,
+    img: '/images/placeholder-2.webp',
+    imgAlt: 'Platform screenshot 2',
+    userAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80',
+    userComment: 'Incredibly intuitive node-based canvas.'
+  },
+  {
+    id: 3,
+    img: '/images/placeholder-3.webp',
+    imgAlt: 'Platform screenshot 3',
+    userAvatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=100&q=80',
+    userComment: 'Model comparison made choosing the best algorithm effortless.'
+  }
+];
 
 export default function Home() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false })
-  );
-
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
+      <Navbar />
       {/* Background ambient glow */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/10 blur-[120px]" />
@@ -45,59 +57,7 @@ export default function Home() {
 
       <main className="relative z-10 flex flex-col items-center pb-24 space-y-16">
         {/* Hero Section */}
-        <section className="w-full pt-8 pb-12 px-6 text-center flex flex-col items-center">
-          <div className="flex flex-wrap justify-center gap-3 mb-4">
-            <Badge variant="outline" className="text-secondary border-secondary/30 bg-secondary/10 px-4 py-1.5 text-sm">
-              Open Source
-            </Badge>
-            <Badge variant="outline" className="text-primary border-primary/30 bg-primary/10 px-4 py-1.5 text-sm">
-              Artificial Intelligence
-            </Badge>
-            <Badge variant="outline" className="text-primary border-primary/30 bg-primary/10 px-4 py-1.5 text-sm">
-              Machine Learning
-            </Badge>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 max-w-4xl text-balance">
-            Machine Learning, <span className="text-primary">Automated</span> & <span className="text-secondary">Accessible</span>.
-          </h1>
-          
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-16 text-balance leading-relaxed">
-            A <Highlighter color="rgba(79, 70, 229, 0.4)" action="highlight" isView>no-code AutoML platform</Highlighter> built for everyone. Go from raw datasets to evaluated models in minutes using a <Highlighter color="#10b981" action="underline" isView>powerful node-based canvas.</Highlighter>
-          </p>
-
-          <WarpBackground className="w-full max-w-6xl mt-4 p-8 md:p-24">
-            <Carousel
-              opts={{ loop: true }}
-              plugins={[plugin.current]}
-              className="w-full"
-            >
-              <CarouselContent>
-                {[1, 2, 3].map((index) => (
-                  <CarouselItem key={index}>
-                    <div className="p-1">
-                      <div className="relative aspect-video rounded-xl overflow-hidden border border-border shadow-2xl bg-surface">
-                        <Image
-                          src={`/images/placeholder-${index}.webp`}
-                          alt={`Platform screenshot ${index}`}
-                          fill
-                          className="object-cover"
-                          priority={index === 1}
-                        />
-                        {/* Fallback overlay in case image doesn't exist */}
-                        <div className="absolute inset-0 flex items-center justify-center bg-surface/50 text-muted-foreground text-sm font-mono z-[-1]">
-                          /images/placeholder-{index}.webp
-                        </div>
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex bg-surface/80 hover:bg-surface border-border" />
-              <CarouselNext className="hidden md:flex bg-surface/80 hover:bg-surface border-border" />
-            </Carousel>
-          </WarpBackground>
-        </section>
+        <HeroSection menudata={carouselData} />
 
         {/* Section 1: The Prologue - Learning Center */}
         <SectionContainer delay={0.1} className="px-6 mx-6 w-[calc(100%-3rem)]">
