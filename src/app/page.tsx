@@ -27,6 +27,8 @@ import { LazyVideo } from "@/components/ui/lazy-video";
 import { Server, User } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Highlighter } from "@/components/ui/highlighter";
+import { WarpBackground } from "@/components/ui/warp-background";
+import { ComparisonTable } from "@/components/ui/comparison-table";
 
 export default function Home() {
   const plugin = React.useRef(
@@ -44,9 +46,15 @@ export default function Home() {
       <main className="relative z-10 flex flex-col items-center pb-24 space-y-16">
         {/* Hero Section */}
         <section className="w-full pt-8 pb-12 px-6 text-center flex flex-col items-center">
-          <div className="flex gap-3 mb-4">
+          <div className="flex flex-wrap justify-center gap-3 mb-4">
             <Badge variant="outline" className="text-secondary border-secondary/30 bg-secondary/10 px-4 py-1.5 text-sm">
               Open Source
+            </Badge>
+            <Badge variant="outline" className="text-primary border-primary/30 bg-primary/10 px-4 py-1.5 text-sm">
+              Artificial Intelligence
+            </Badge>
+            <Badge variant="outline" className="text-primary border-primary/30 bg-primary/10 px-4 py-1.5 text-sm">
+              Machine Learning
             </Badge>
           </div>
           
@@ -55,38 +63,40 @@ export default function Home() {
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-16 text-balance leading-relaxed">
-            A <Highlighter color="#4f46e5" action="highlight" isView>no-code AutoML platform</Highlighter> built for everyone. Go from raw datasets to evaluated models in minutes using a <Highlighter color="#10b981" action="underline" isView>powerful node-based canvas.</Highlighter>
+            A <Highlighter color="rgba(79, 70, 229, 0.4)" action="highlight" isView>no-code AutoML platform</Highlighter> built for everyone. Go from raw datasets to evaluated models in minutes using a <Highlighter color="#10b981" action="underline" isView>powerful node-based canvas.</Highlighter>
           </p>
 
-          <Carousel
-            opts={{ loop: true }}
-            plugins={[plugin.current]}
-            className="w-full max-w-5xl"
-          >
-            <CarouselContent>
-              {[1, 2, 3].map((index) => (
-                <CarouselItem key={index}>
-                  <div className="p-1">
-                    <div className="relative aspect-video rounded-xl overflow-hidden border border-border shadow-2xl bg-surface">
-                      <Image
-                        src={`/images/placeholder-${index}.webp`}
-                        alt={`Platform screenshot ${index}`}
-                        fill
-                        className="object-cover"
-                        priority={index === 1}
-                      />
-                      {/* Fallback overlay in case image doesn't exist */}
-                      <div className="absolute inset-0 flex items-center justify-center bg-surface/50 text-muted-foreground text-sm font-mono z-[-1]">
-                        /images/placeholder-{index}.webp
+          <WarpBackground className="w-full max-w-6xl mt-4 p-8 md:p-24">
+            <Carousel
+              opts={{ loop: true }}
+              plugins={[plugin.current]}
+              className="w-full"
+            >
+              <CarouselContent>
+                {[1, 2, 3].map((index) => (
+                  <CarouselItem key={index}>
+                    <div className="p-1">
+                      <div className="relative aspect-video rounded-xl overflow-hidden border border-border shadow-2xl bg-surface">
+                        <Image
+                          src={`/images/placeholder-${index}.webp`}
+                          alt={`Platform screenshot ${index}`}
+                          fill
+                          className="object-cover"
+                          priority={index === 1}
+                        />
+                        {/* Fallback overlay in case image doesn't exist */}
+                        <div className="absolute inset-0 flex items-center justify-center bg-surface/50 text-muted-foreground text-sm font-mono z-[-1]">
+                          /images/placeholder-{index}.webp
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex bg-surface/80 hover:bg-surface border-border" />
-            <CarouselNext className="hidden md:flex bg-surface/80 hover:bg-surface border-border" />
-          </Carousel>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex bg-surface/80 hover:bg-surface border-border" />
+              <CarouselNext className="hidden md:flex bg-surface/80 hover:bg-surface border-border" />
+            </Carousel>
+          </WarpBackground>
         </section>
 
         {/* Section 1: The Prologue - Learning Center */}
@@ -179,6 +189,17 @@ export default function Home() {
             </div>
           </div>
         </SectionContainer>
+
+        {/* Competitor Comparison Section */}
+        <section className="w-full pt-16 px-6 flex flex-col items-center">
+          <div className="text-center space-y-4 mb-8">
+            <h2 className="text-3xl font-bold">How We <span className="text-primary">Compare</span></h2>
+            <p className="text-muted-foreground text-lg max-w-2xl text-balance">
+              Why spend weeks setting up infrastructure when you can get results in minutes?
+            </p>
+          </div>
+          <ComparisonTable />
+        </section>
       </main>
 
       {/* Footer */}
