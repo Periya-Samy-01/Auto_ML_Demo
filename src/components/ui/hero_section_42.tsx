@@ -79,7 +79,7 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
             </h1>
 
             <p className='text-muted-foreground max-w-xl text-xl max-lg:text-center mt-2'>
-              A no-code AutoML platform built for everyone. Go from raw datasets to evaluated models in minutes using a powerful node-based canvas.
+              NodeForge is a no-code AutoML platform built for everyone. Go from raw datasets to evaluated models in minutes using a powerful node-based canvas.
             </p>
 
             <div className='flex items-center gap-4 mt-4'>
@@ -88,8 +88,8 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
                 size='lg'
                 className='group relative w-fit overflow-hidden rounded-full text-base before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.5)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] before:bg-no-repeat before:transition-[background-position_0s_ease] before:duration-1000 hover:before:bg-[position:-100%_0,0_0] has-[>svg]:px-6 dark:before:bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.2)_50%,transparent_75%,transparent_100%)]'
               >
-                <a href='#'>
-                  Order now
+                <a href='https://auto-ml-platform-01.vercel.app/auth/login' target="_blank" rel="noopener noreferrer">
+                  Launch Platform
                   <ArrowRightIcon className='transition-transform duration-200 group-hover:translate-x-0.5' />
                 </a>
               </Button>
@@ -98,7 +98,7 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
                 asChild
                 className='bg-primary/10 hover:bg-primary/20 text-primary rounded-full text-base'
               >
-                <a href='#'>Book table</a>
+                <a href='https://github.com/Periya-Samy-01/Auto_ML_Platform_01' target="_blank" rel="noopener noreferrer">GitHub Repo</a>
               </Button>
             </div>
           </div>

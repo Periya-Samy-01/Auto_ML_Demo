@@ -39,23 +39,24 @@ export const AnimatedList = React.memo(
     )
 
     useEffect(() => {
-      let timeout: ReturnType<typeof setTimeout> | null = null
+      const interval = setInterval(() => {
+        setIndex((prevIndex) => prevIndex + 1)
+      }, delay)
 
-      if (index < childrenArray.length - 1) {
-        timeout = setTimeout(() => {
-          setIndex((prevIndex) => (prevIndex + 1) % childrenArray.length)
-        }, delay)
-      }
-
-      return () => {
-        if (timeout !== null) {
-          clearTimeout(timeout)
-        }
-      }
-    }, [index, delay, childrenArray.length])
+      return () => clearInterval(interval)
+    }, [delay])
 
     const itemsToShow = useMemo(() => {
-      const result = childrenArray.slice(0, index + 1).reverse()
+      const maxItems = 6 // Show at most 6 items at a time to prevent DOM bloat
+      const count = Math.min(index + 1, maxItems)
+      const result = Array.from({ length: count }, (_, i) => {
+        const globalIndex = index - i
+        const localIndex = globalIndex % childrenArray.length
+        const safeIndex = localIndex < 0 ? localIndex + childrenArray.length : localIndex
+        const item = childrenArray[safeIndex] as React.ReactElement
+        // We must give each item a unique key based on its global position
+        return React.cloneElement(item, { key: `anim-item-${globalIndex}` })
+      })
       return result
     }, [index, childrenArray])
 

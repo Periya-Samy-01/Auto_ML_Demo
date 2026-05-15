@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Archive, FileText, Menu, User, X } from "lucide-react"
+import { Layers, Smartphone, Scale, UserCircle, Menu, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible"
@@ -9,24 +9,24 @@ import { Separator } from "@/components/ui/separator"
 
 const LINKS = [
   {
-    icon: FileText,
-    title: "Pages",
-    href: "#",
+    icon: Layers,
+    title: "Platform Sections",
+    href: "#platform-sections",
   },
   {
-    icon: User,
-    title: "Account",
-    href: "#",
+    icon: Smartphone,
+    title: "Device",
+    href: "#device-experience",
   },
   {
-    icon: Archive,
-    title: "Blocks",
-    href: "#",
+    icon: Scale,
+    title: "Comparison Table",
+    href: "#comparison",
   },
   {
-    icon: Archive,
-    title: "Docs",
-    href: "#",
+    icon: UserCircle,
+    title: "About Me",
+    href: "#about-me",
   },
 ]
 
@@ -62,14 +62,15 @@ export function Navbar() {
   return (
     <nav className="bg-background/80 backdrop-blur-md sticky top-0 z-50 w-full border-b border-border px-4 py-3 shadow-sm">
       <div className="max-w-7xl mx-auto flex items-center">
-        <a href="#" className="mr-4 block py-1 text-lg font-bold text-foreground">
-          AutoML Platform
+        <a href="#" className="flex items-center gap-3 py-1 text-xl font-bold text-foreground tracking-tight">
+          <img src="/images/NodeForge_Logo.png" alt="NodeForge Logo" className="h-8 w-auto object-contain" />
+          NodeForge
         </a>
         <Separator
           orientation="vertical"
-          className="mr-2 ml-1 hidden h-5 lg:block bg-border"
+          className="mx-6 hidden h-6 lg:block bg-border/50"
         />
-        <div className="hidden lg:block ml-4">
+        <div className="hidden lg:block">
           <NavList />
         </div>
         

@@ -20,18 +20,22 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { ComparisonTable } from "@/components/ui/comparison-table";
 import HeroSection, { type MenuData } from "@/components/ui/hero_section_42";
 import { Navbar } from "@/components/ui/navbar";
+import { Safari } from "@/components/ui/safari";
+import { Iphone } from "@/components/ui/iphone";
+import { AnimatedList } from "@/components/ui/animated-list";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 const carouselData: MenuData[] = [
   {
     id: 1,
-    img: '/images/placeholder-1.webp',
+    img: '/images/Carousel_1.png',
     imgAlt: 'Platform screenshot 1',
     userAvatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80',
-    userComment: 'This AutoML platform saved us weeks of setup time!'
+    userComment: 'NodeForge saved us weeks of setup time!'
   },
   {
     id: 2,
-    img: '/images/placeholder-2.webp',
+    img: '/images/Carousel_2.png',
     imgAlt: 'Platform screenshot 2',
     userAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80',
     userComment: 'Incredibly intuitive node-based canvas.'
@@ -60,6 +64,7 @@ export default function Home() {
         <HeroSection menudata={carouselData} />
 
         {/* Section 1: The Prologue - Learning Center */}
+        <div id="platform-sections" className="scroll-mt-24" />
         <SectionContainer delay={0.1} className="px-6 mx-6 w-[calc(100%-3rem)]">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="aspect-video w-full">
@@ -150,12 +155,107 @@ export default function Home() {
           </div>
         </SectionContainer>
 
+        {/* Device Experience Section */}
+        <div id="device-experience" className="scroll-mt-24" />
+        <SectionContainer delay={0.1} className="px-6 mx-6 w-[calc(100%-3rem)]">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl font-bold">Built for <span className="text-primary">Every Device</span></h2>
+            <p className="text-muted-foreground text-lg max-w-2xl text-balance mx-auto">
+              Learn on the go with our mobile app, and unleash full training capabilities on desktop.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto w-full items-start">
+            {/* Desktop Column */}
+            <div className="flex flex-col space-y-8">
+              <div className="text-center">
+                <h3 className="text-2xl font-semibold mb-2">In Desktop</h3>
+                <p className="text-muted-foreground">Full access to the node-based canvas, model training, and evaluation.</p>
+              </div>
+              <Safari videoSrc="/videos/training.mp4" className="w-full drop-shadow-2xl" />
+              <div className="bg-surface/50 border border-border rounded-xl p-6 relative overflow-hidden h-[300px]">
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
+                <AnimatedList delay={2000}>
+                  <div className="flex items-center gap-4 bg-background p-4 rounded-lg border border-border shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500 text-lg">📂</div>
+                    <div>
+                      <p className="font-medium">Load Dataset</p>
+                      <p className="text-sm text-muted-foreground">Import your raw data securely.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 bg-background p-4 rounded-lg border border-border shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500 text-lg">🧹</div>
+                    <div>
+                      <p className="font-medium">Preprocess your data</p>
+                      <p className="text-sm text-muted-foreground">Clean and transform automatically.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 bg-background p-4 rounded-lg border border-border shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-500 text-lg">🧠</div>
+                    <div>
+                      <p className="font-medium">Train model</p>
+                      <p className="text-sm text-muted-foreground">Neural networks at your fingertips.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 bg-background p-4 rounded-lg border border-border shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-500 text-lg">📊</div>
+                    <div>
+                      <p className="font-medium">Evaluate model</p>
+                      <p className="text-sm text-muted-foreground">Analyze precision and recall metrics.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 bg-background p-4 rounded-lg border border-border shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-500 text-lg">📈</div>
+                    <div>
+                      <p className="font-medium">Visualize Result</p>
+                      <p className="text-sm text-muted-foreground">Generate interactive charts instantly.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 bg-background p-4 rounded-lg border border-border shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 text-lg">🚀</div>
+                    <div>
+                      <p className="font-medium">Download the saved model</p>
+                      <p className="text-sm text-muted-foreground">Export directly for production deployment.</p>
+                    </div>
+                  </div>
+                </AnimatedList>
+              </div>
+            </div>
+
+            {/* Mobile Column */}
+            <div className="flex flex-col space-y-8 h-full">
+              <div className="text-center">
+                <h3 className="text-2xl font-semibold mb-2">In Mobile 📱</h3>
+                <p className="text-muted-foreground">Access our comprehensive Learning Center anytime, anywhere.</p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-8 items-center flex-1">
+                <div className="bg-surface/50 border border-border rounded-xl p-6 flex flex-col justify-center h-fit flex-1 w-full my-auto">
+                  <h4 className="text-xl font-medium mb-4">Learn on the Go</h4>
+                  <p className="text-muted-foreground mb-4">
+                    Our mobile experience is optimized purely for education. Prepare for your desktop session by learning key ML concepts, terminology, and best practices.
+                  </p>
+                  <ul className="space-y-3 text-sm text-muted-foreground">
+                    <li className="flex items-center gap-2"><span className="text-primary">✓</span> Interactive tutorials</li>
+                    <li className="flex items-center gap-2"><span className="text-primary">✓</span> Video lectures</li>
+                    <li className="flex items-center gap-2"><span className="text-primary">✓</span> Quick-reference glossary</li>
+                    <li className="flex items-center gap-2"><span className="text-primary">✓</span> Progress tracking</li>
+                  </ul>
+                </div>
+                <div className="flex justify-center w-full sm:w-[260px] shrink-0 h-full max-h-[500px]">
+                  <Iphone videoSrc="/videos/iphone.mp4" className="w-full h-full max-w-[260px] drop-shadow-2xl object-cover" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </SectionContainer>
+
         {/* Competitor Comparison Section */}
-        <section className="w-full pt-16 px-6 flex flex-col items-center">
+        <section id="comparison" className="w-full pt-0 px-6 flex flex-col items-center scroll-mt-24">
           <div className="text-center space-y-4 mb-8">
-            <h2 className="text-3xl font-bold">How We <span className="text-primary">Compare</span></h2>
+            <h2 className="text-3xl font-bold">Built for Learners. Designed for  <span className="text-primary">Clarity</span></h2>
             <p className="text-muted-foreground text-lg max-w-2xl text-balance">
-              Why spend weeks setting up infrastructure when you can get results in minutes?
+              Why get lost in thousands of lines of boilerplate code or nested cloud menus?\n NodeForge lets you master ML fundamentals by interacting with your workflow visually, making concepts like hyperparameter tuning and model evaluation instantly clear.
             </p>
           </div>
           <ComparisonTable />
@@ -163,44 +263,71 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 w-full border-t border-border bg-surface py-12 px-6">
+      <footer id="about-me" className="relative z-10 w-full border-t border-border bg-surface py-12 px-6 scroll-mt-24">
         <div className="max-w-7xl mx-auto">
           <TooltipProvider delayDuration={300}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               
               {/* GitHub */}
-              <a href="#" className="group flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors">
-                <div className="p-3 bg-white/5 rounded-full group-hover:bg-primary/20 group-hover:text-primary transition-colors">
-                  <FaGithub className="w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-semibold">Source Code</h4>
-                  <p className="text-sm text-muted-foreground">Star on GitHub</p>
-                </div>
+              <a href="#" className="block h-full hover:-translate-y-1 transition-transform group">
+                <Card className="h-full flex flex-col hover:border-primary/50 transition-colors bg-surface overflow-hidden border-border/50 p-0 gap-0">
+                  <div className="relative w-full h-32 bg-background overflow-hidden border-b border-border/50 shrink-0">
+                    <img src="/images/Github.png" alt="Source Code" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <CardHeader className="pt-4 pb-2 px-4 gap-0 border-none">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-white/5 rounded-full text-foreground group-hover:bg-primary/20 group-hover:text-primary transition-colors">
+                        <FaGithub className="w-5 h-5" />
+                      </div>
+                      <CardTitle className="text-lg">Source Code</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="px-4 pb-4 flex-1">
+                    <CardDescription className="ml-12">Star on GitHub</CardDescription>
+                  </CardContent>
+                </Card>
               </a>
 
               {/* LinkedIn */}
-              <a href="#" className="group flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors">
-                <div className="p-3 bg-white/5 rounded-full group-hover:bg-primary/20 group-hover:text-primary transition-colors">
-                  <FaLinkedin className="w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-semibold">Connect</h4>
-                  <p className="text-sm text-muted-foreground">Follow on LinkedIn</p>
-                </div>
+              <a href="#" className="block h-full hover:-translate-y-1 transition-transform group">
+                <Card className="h-full flex flex-col hover:border-primary/50 transition-colors bg-surface overflow-hidden border-border/50 p-0 gap-0">
+                  <div className="relative w-full h-32 bg-background overflow-hidden border-b border-border/50 shrink-0">
+                    <img src="/images/LinkedIn.png" alt="Connect" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <CardHeader className="pt-4 pb-2 px-4 gap-0 border-none">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-white/5 rounded-full text-foreground group-hover:bg-primary/20 group-hover:text-primary transition-colors">
+                        <FaLinkedin className="w-5 h-5" />
+                      </div>
+                      <CardTitle className="text-lg">Connect</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="px-4 pb-4 flex-1">
+                    <CardDescription className="ml-12">Follow on LinkedIn</CardDescription>
+                  </CardContent>
+                </Card>
               </a>
 
               {/* About Me */}
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <a href="#" className="group flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
-                    <div className="p-3 bg-white/5 rounded-full group-hover:bg-secondary/20 group-hover:text-secondary transition-colors">
-                      <User className="w-6 h-6" />
-                    </div>
-                    <div className="text-left">
-                      <h4 className="font-semibold">About the Creator</h4>
-                      <p className="text-sm text-muted-foreground">Bio & Portfolio</p>
-                    </div>
+                  <a href="#" className="block h-full hover:-translate-y-1 transition-transform group cursor-pointer text-left">
+                    <Card className="h-full flex flex-col hover:border-secondary/50 transition-colors bg-surface overflow-hidden border-border/50 p-0 gap-0">
+                      <div className="relative w-full h-32 bg-background overflow-hidden border-b border-border/50 shrink-0">
+                        <img src="/images/personal.png" alt="About the Creator" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      </div>
+                      <CardHeader className="pt-4 pb-2 px-4 gap-0 border-none">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-white/5 rounded-full text-foreground group-hover:bg-secondary/20 group-hover:text-secondary transition-colors">
+                            <User className="w-5 h-5" />
+                          </div>
+                          <CardTitle className="text-lg">About the Creator</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="px-4 pb-4 flex-1">
+                        <CardDescription className="ml-12">Bio & Portfolio</CardDescription>
+                      </CardContent>
+                    </Card>
                   </a>
                 </TooltipTrigger>
                 <TooltipContent side="top">
@@ -211,14 +338,23 @@ export default function Home() {
               {/* Deployment Link */}
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <a href="#" className="group flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
-                    <div className="p-3 bg-white/5 rounded-full group-hover:bg-secondary/20 group-hover:text-secondary transition-colors">
-                      <Server className="w-6 h-6" />
-                    </div>
-                    <div className="text-left">
-                      <h4 className="font-semibold">Live Deployment</h4>
-                      <p className="text-sm text-muted-foreground">Try it out now</p>
-                    </div>
+                  <a href="#" className="block h-full hover:-translate-y-1 transition-transform group cursor-pointer text-left">
+                    <Card className="h-full flex flex-col hover:border-secondary/50 transition-colors bg-surface overflow-hidden border-border/50 p-0 gap-0">
+                      <div className="relative w-full h-32 bg-background overflow-hidden border-b border-border/50 shrink-0">
+                        <img src="/images/live.png" alt="Live Deployment" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      </div>
+                      <CardHeader className="pt-4 pb-2 px-4 gap-0 border-none">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-white/5 rounded-full text-foreground group-hover:bg-secondary/20 group-hover:text-secondary transition-colors">
+                            <Server className="w-5 h-5" />
+                          </div>
+                          <CardTitle className="text-lg">Live Deployment</CardTitle>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="px-4 pb-4 flex-1">
+                        <CardDescription className="ml-12">Try it out now</CardDescription>
+                      </CardContent>
+                    </Card>
                   </a>
                 </TooltipTrigger>
                 <TooltipContent side="top" className="max-w-[200px] text-center">
@@ -230,7 +366,7 @@ export default function Home() {
           </TooltipProvider>
 
           <div className="mt-12 text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} AutoML Platform. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} NodeForge. All rights reserved.</p>
           </div>
         </div>
       </footer>
