@@ -42,7 +42,7 @@ const carouselData: MenuData[] = [
   },
   {
     id: 3,
-    img: '/images/placeholder-3.webp',
+    img: '/images/Carousel_3.png',
     imgAlt: 'Platform screenshot 3',
     userAvatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=100&q=80',
     userComment: 'Model comparison made choosing the best algorithm effortless.'
@@ -91,7 +91,7 @@ export default function Home() {
         <SectionContainer delay={0.1} className="px-6 mx-6 w-[calc(100%-3rem)]">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 order-2 md:order-1">
-              <h2 className="text-3xl font-bold">The Setup: <br/><span className="text-primary">Dataset Preparation</span></h2>
+              <h2 className="text-3xl font-bold">The Setup: <br/><span className="text-secondary">Dataset Preparation</span></h2>
               <p className="text-muted-foreground text-lg">
                 Upload your CSVs with a single click. The platform automatically infers data types, detects anomalies, and visualizes distributions so you understand your data instantly.
               </p>
@@ -269,7 +269,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               
               {/* GitHub */}
-              <a href="#" className="block h-full hover:-translate-y-1 transition-transform group">
+              <a href="https://github.com/Periya-Samy-01/Auto_ML_Platform_01" target="_blank" rel="noopener noreferrer" className="block h-full hover:-translate-y-1 transition-transform group">
                 <Card className="h-full flex flex-col hover:border-primary/50 transition-colors bg-surface overflow-hidden border-border/50 p-0 gap-0">
                   <div className="relative w-full h-32 bg-background overflow-hidden border-b border-border/50 shrink-0">
                     <img src="/images/Github.png" alt="Source Code" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -282,14 +282,20 @@ export default function Home() {
                       <CardTitle className="text-lg">Source Code</CardTitle>
                     </div>
                   </CardHeader>
-                  <CardContent className="px-4 pb-4 flex-1">
-                    <CardDescription className="ml-12">Star on GitHub</CardDescription>
+                  <CardContent className="px-4 pb-5 flex-1 flex flex-col gap-3">
+                    <CardDescription className="ml-12 font-medium text-foreground/80">Star on GitHub</CardDescription>
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                      Explore the open-source repository for NodeForge. Contributions, issues, and feature requests are always welcome from the community.
+                    </p>
+                    <div className="mt-auto pt-2 text-primary text-sm font-semibold flex items-center gap-1 group-hover:underline">
+                      View Repository <span className="text-lg leading-none transition-transform group-hover:translate-x-1">&rarr;</span>
+                    </div>
                   </CardContent>
                 </Card>
               </a>
 
               {/* LinkedIn */}
-              <a href="#" className="block h-full hover:-translate-y-1 transition-transform group">
+              <a href="https://www.linkedin.com/in/periya-samy-ganesan-687370266" target="_blank" rel="noopener noreferrer" className="block h-full hover:-translate-y-1 transition-transform group">
                 <Card className="h-full flex flex-col hover:border-primary/50 transition-colors bg-surface overflow-hidden border-border/50 p-0 gap-0">
                   <div className="relative w-full h-32 bg-background overflow-hidden border-b border-border/50 shrink-0">
                     <img src="/images/LinkedIn.png" alt="Connect" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -302,65 +308,66 @@ export default function Home() {
                       <CardTitle className="text-lg">Connect</CardTitle>
                     </div>
                   </CardHeader>
-                  <CardContent className="px-4 pb-4 flex-1">
-                    <CardDescription className="ml-12">Follow on LinkedIn</CardDescription>
+                  <CardContent className="px-4 pb-5 flex-1 flex flex-col gap-3">
+                    <CardDescription className="ml-12 font-medium text-foreground/80">Follow on LinkedIn</CardDescription>
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                      Connect with the creator, follow the latest updates on the platform, and join the professional network discussing the future of AutoML.
+                    </p>
+                    <div className="mt-auto pt-2 text-primary text-sm font-semibold flex items-center gap-1 group-hover:underline">
+                      Connect <span className="text-lg leading-none transition-transform group-hover:translate-x-1">&rarr;</span>
+                    </div>
                   </CardContent>
                 </Card>
               </a>
 
               {/* About Me */}
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a href="#" className="block h-full hover:-translate-y-1 transition-transform group cursor-pointer text-left">
-                    <Card className="h-full flex flex-col hover:border-secondary/50 transition-colors bg-surface overflow-hidden border-border/50 p-0 gap-0">
-                      <div className="relative w-full h-32 bg-background overflow-hidden border-b border-border/50 shrink-0">
-                        <img src="/images/personal.png" alt="About the Creator" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="block h-full text-left">
+                <Card className="h-full flex flex-col bg-surface overflow-hidden border-border/50 p-0 gap-0">
+                  <div className="relative w-full h-32 bg-background overflow-hidden border-b border-border/50 shrink-0">
+                    <img src="/images/personal.png" alt="About the Creator" className="w-full h-full object-cover" />
+                  </div>
+                  <CardHeader className="pt-4 pb-2 px-4 gap-0 border-none">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-white/5 rounded-full text-foreground">
+                        <User className="w-5 h-5" />
                       </div>
-                      <CardHeader className="pt-4 pb-2 px-4 gap-0 border-none">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 bg-white/5 rounded-full text-foreground group-hover:bg-secondary/20 group-hover:text-secondary transition-colors">
-                            <User className="w-5 h-5" />
-                          </div>
-                          <CardTitle className="text-lg">About the Creator</CardTitle>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="px-4 pb-4 flex-1">
-                        <CardDescription className="ml-12">Bio & Portfolio</CardDescription>
-                      </CardContent>
-                    </Card>
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent side="top">
-                  <p>Hi! I built this platform to make AI more accessible.</p>
-                </TooltipContent>
-              </Tooltip>
+                      <CardTitle className="text-lg">About the Creator</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="px-4 pb-5 flex-1 flex flex-col gap-3">
+                    <CardDescription className="ml-12 font-medium text-foreground/80">Bio & Portfolio</CardDescription>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Hi, I’m Periya Samy, an AI/ML Engineer and Software Developer. I build intuitive web applications and intelligent platforms like NodeForge to break down complex machine learning systems into accessible, highly visual workflows.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
 
               {/* Deployment Link */}
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a href="#" className="block h-full hover:-translate-y-1 transition-transform group cursor-pointer text-left">
-                    <Card className="h-full flex flex-col hover:border-secondary/50 transition-colors bg-surface overflow-hidden border-border/50 p-0 gap-0">
-                      <div className="relative w-full h-32 bg-background overflow-hidden border-b border-border/50 shrink-0">
-                        <img src="/images/live.png" alt="Live Deployment" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="block h-full text-left">
+                <Card className="h-full flex flex-col bg-surface overflow-hidden border-border/50 p-0 gap-0">
+                  <div className="relative w-full h-32 bg-background overflow-hidden border-b border-border/50 shrink-0">
+                    <img src="/images/live.png" alt="Live Deployment" className="w-full h-full object-cover" />
+                  </div>
+                  <CardHeader className="pt-4 pb-2 px-4 gap-0 border-none">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-white/5 rounded-full text-foreground">
+                        <Server className="w-5 h-5" />
                       </div>
-                      <CardHeader className="pt-4 pb-2 px-4 gap-0 border-none">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 bg-white/5 rounded-full text-foreground group-hover:bg-secondary/20 group-hover:text-secondary transition-colors">
-                            <Server className="w-5 h-5" />
-                          </div>
-                          <CardTitle className="text-lg">Live Deployment</CardTitle>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="px-4 pb-4 flex-1">
-                        <CardDescription className="ml-12">Try it out now</CardDescription>
-                      </CardContent>
-                    </Card>
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent side="top" className="max-w-[200px] text-center">
-                  <p>Hosted on a free-tier server. May take ~50 seconds to wake up from cold start.</p>
-                </TooltipContent>
-              </Tooltip>
+                      <CardTitle className="text-lg">Live Deployment</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="px-4 pb-5 flex-1 flex flex-col gap-3">
+                    <CardDescription className="ml-12 font-medium text-foreground/80">Try it out now</CardDescription>
+                    <div className="text-sm text-muted-foreground leading-relaxed space-y-2 mt-1">
+                      <p><strong className="text-foreground/80 font-medium">Free-Tier Hosting:</strong> Running entirely on community cloud servers.</p>
+                      <p><strong className="text-foreground/80 font-medium">60s Cold Start:</strong> Allow up to a minute for the initial load to wake the server.</p>
+                      <p><strong className="text-foreground/80 font-medium">Temporary Cache:</strong> Active pipelines rely on a temporary Redis session.</p>
+                      <p><strong className="text-foreground/80 font-medium">Manual Refresh:</strong> Contact me directly if you hit a timeout or instance drop.</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
 
             </div>
           </TooltipProvider>
